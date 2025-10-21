@@ -1,0 +1,5 @@
+{
+  "name": "IntelliStudy - Personalized Learning Assistant",
+  "description": "Upload a PDF document to chat with it, generate quizzes, create flashcards, and get summaries. An interactive AI-powered assistant to supercharge your learning.",
+  "requestFramePermissions": []
+}
