@@ -6,6 +6,44 @@ export interface ChatMessage {
     text: string;
 }
 
+export type Json = | string | number | boolean | null | { [key: string]: Json } | Json[];
+
+export type ModuleStatus = 'locked' | 'unlocked' | 'completed';
+export type SubModuleStatus = 'locked' | 'unlocked' | 'completed';
+
+export interface LearningModule {
+  id: string;
+  title: string;
+  description: string;
+  subModules: SubModule[];
+  status: ModuleStatus;
+}
+
+export interface SubModule {
+  id: string;
+  title: string;
+  content: string;
+  lessons: Lesson[];
+  exercises: Exercise[];
+  status: SubModuleStatus;
+}
+
+export interface Lesson {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export type Exercise = QuizQuestion | OneLineQuestion;
+
+export interface OneLineQuestion {
+  id: string;
+  question: string;
+  correctAnswer: string;
+  userAnswer?: string;
+  isCorrect?: boolean;
+}
+
 export interface QuizQuestion {
     question: string;
     options: string[];
@@ -175,4 +213,3 @@ export interface Database {
   };
 }
 
-export type Json = | string | number | boolean | null | { [key: string]: Json } | Json[];

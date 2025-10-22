@@ -6,6 +6,7 @@ import { VideoChatPage } from "./components/VideoChatPage";
 import { ProfilePage } from "./components/ProfilePage";
 import { DashboardLayout } from "./components/Layout";
 import { HomePage } from "./components/Homepage.tsx";
+import LearnAnythingPage from "./components/LearnAnythingPage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import { supabase } from "./services/supabaseService";
@@ -35,16 +36,41 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={!session ? <HomePage /> : <Navigate to="/dashboard" />} />
-        <Route path="/login" element={!session ? <LoginPage /> : <Navigate to="/dashboard" />} />
-        <Route path="/signup" element={!session ? <SignupPage /> : <Navigate to="/dashboard" />} />
+        <Route
+          path="/"
+          element={!session ? <HomePage /> : <Navigate to="/dashboard" />}
+        />
+        <Route
+          path="/login"
+          element={!session ? <LoginPage /> : <Navigate to="/dashboard" />}
+        />
+        <Route
+          path="/signup"
+          element={!session ? <SignupPage /> : <Navigate to="/dashboard" />}
+        />
+        <Route
+          path="/learn/:id"
+          element={session ? <LearnAnythingPage /> : <Navigate to="/login" />}
+        />
 
         {/* 👇 Grouped routes wrapped with DashboardLayout */}
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={session ? <DashboardPage /> : <Navigate to="/login" />} />
-          <Route path="/profile" element={session ? <ProfilePage /> : <Navigate to="/login" />} />
-          <Route path="/chat/d/:id" element={session ? <ChatPage /> : <Navigate to="/login" />} />
-          <Route path="/chat/v/:id" element={session ? <VideoChatPage /> : <Navigate to="/login" />} />
+          <Route
+            path="/dashboard"
+            element={session ? <DashboardPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/profile"
+            element={session ? <ProfilePage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/chat/d/:id"
+            element={session ? <ChatPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/chat/v/:id"
+            element={session ? <VideoChatPage /> : <Navigate to="/login" />}
+          />
         </Route>
       </Routes>
     </Router>
