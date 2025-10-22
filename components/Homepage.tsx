@@ -14,6 +14,7 @@ import {
   ArrowRight,
   Shield,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export  function HomePage() {
   const heroRef = useRef(null);
@@ -101,9 +102,11 @@ export  function HomePage() {
               >
                 Features
               </a>
+               <Link to={"/dashboard"}>
               <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300">
                 Get Started
               </button>
+              </Link>
             </nav>
           </div>
         </div>
@@ -180,7 +183,9 @@ export  function HomePage() {
           >
             <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300">
               <span className="flex items-center justify-center gap-2">
+                 <Link to={"/dashboard"}>
                 Start Learning Free
+                  </Link>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
